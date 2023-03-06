@@ -2,13 +2,14 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import './App.css'
 import { testAction } from './store/actions'
+import { State } from './store/store'
 
 function App() {
-    const test: String = useSelector((state) => state.reducer1.test)
+    const test: String = useSelector((state: State) => state.reducer1.test)
     console.log('🚀 test:', test)
     const dispatch = useDispatch()
 
-    function click(e) {
+    function click(event: React.MouseEvent<HTMLButtonElement>) {
         console.log('click')
         dispatch(testAction())
     }

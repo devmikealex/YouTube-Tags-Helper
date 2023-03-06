@@ -1,6 +1,9 @@
-export const TEST = 'TEST'
+export interface ActionRDX {
+    type: string
+}
 
-export function testAction() {
+export const TEST = 'TEST'
+export function testAction(): ActionRDX {
     return {
         type: TEST,
     }
