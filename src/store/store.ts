@@ -1,24 +1,14 @@
-import { createStore } from 'redux'
-import { combineReducers } from 'redux'
-import { ActionRDX, TEST } from './actions'
+import { configureStore } from '@reduxjs/toolkit'
+import tagsSlice from '../features/tagsSlice'
 
-export interface State {
-    reducer1: { test: string }
-}
+const store = configureStore({
+    reducer: {
+        tagList: tagsSlice,
+    },
+    // devTools
+    // preloadedState
+})
 
-const initialState = { test: '12345' }
+export type RootState = ReturnType<typeof store.getState>
 
-function reducer1(state = initialState, action: ActionRDX) {
-    console.log('reducer1 action:', action)
-    switch (action.type) {
-        case TEST:
-            console.log('Action > ' + TEST)
-            return { ...state, test: 'new - ' + Date.now() }
-        default:
-            return state
-    }
-}
-
-export const mainReducer = combineReducers<State>({ reducer1 })
-
-export default createStore(mainReducer)
+export default store

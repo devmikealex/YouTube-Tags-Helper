@@ -1,23 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux'
-
 import './App.css'
-import { testAction } from './store/actions'
-import { State } from './store/store'
+import TagsInput from './components/TagsInput'
+import TagsList from './components/TagsList'
 
 function App() {
-    const test: String = useSelector((state: State) => state.reducer1.test)
-    console.log('🚀 test:', test)
-    const dispatch = useDispatch()
-
-    function click(event: React.MouseEvent<HTMLButtonElement>) {
-        console.log('click')
-        dispatch(testAction())
-    }
-
     return (
         <div className='App'>
-            <h2>{test}</h2>
-            <button onClick={click}>test</button>
+            <h1>TEST</h1>
+            <TagsInput />
+            <TagsList />
         </div>
     )
 }
