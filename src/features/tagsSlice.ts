@@ -15,10 +15,15 @@ export const tagsSlice = createSlice({
     reducers: {
         setTags: (state, action: PayloadAction<string>) => {
             // TODO разбить на массив стрингов
-            state.tags = action.payload.split(', ')
+            if (action.payload) state.tags = action.payload.split(', ')
+        },
+        removeTag: (state, action: PayloadAction<string>) => {
+            const id = action.payload
+            console.log('🚀 ~ file: tagsSlice.ts:22 ~ id:', id)
+            // state.tags.filter((tag) => {})
         },
     },
 })
 
-export const { setTags } = tagsSlice.actions
+export const { setTags, removeTag } = tagsSlice.actions
 export default tagsSlice.reducer
