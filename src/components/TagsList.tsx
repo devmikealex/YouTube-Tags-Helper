@@ -7,7 +7,7 @@ function TagsList(): JSX.Element {
     return (
         <div>
             {tags.map((tag) => {
-                return <Tag text={tag} />
+                return <Tag key={tag.id} {...tag} />
             })}
         </div>
     )

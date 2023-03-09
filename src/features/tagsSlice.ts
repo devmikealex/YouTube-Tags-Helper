@@ -1,12 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import getID from '../utils/getid'
 
-interface TagsState {
-    tags: string[]
+export interface ITag {
+    text: string
+    id: number
 }
 
+interface TagsState {
+    tags: ITag[]
+}
+
+const genGetID = getID()
+
 const initialState: TagsState = {
-    tags: ['JavaScript', 'TypeScript', 'After Effects'],
+    tags: [],
 }
 
 export const tagsSlice = createSlice({
@@ -14,13 +22,16 @@ export const tagsSlice = createSlice({
     initialState,
     reducers: {
         setTags: (state, action: PayloadAction<string>) => {
-            // TODO разбить на массив стрингов
-            if (action.payload) state.tags = action.payload.split(', ')
+            const tags = action.payload.split(', ')
+            if (action.payload)
+                state.tags = tags.map((tagText): ITag => {
+                    return { text: tagText, id: genGetID.next().value }
+                })
         },
-        removeTag: (state, action: PayloadAction<string>) => {
+        removeTag: (state, action: PayloadAction<number>) => {
             const id = action.payload
-            console.log('🚀 ~ file: tagsSlice.ts:22 ~ id:', id)
-            // state.tags.filter((tag) => {})
+            const newTags = state.tags.filter((tag) => tag.id !== id)
+            state.tags = newTags
         },
     },
 })
