@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tagsSlice from '../features/tagsSlice'
+import tagsSlice, { ITag, initTags } from '../features/tagsSlice'
+
+const preloadedState = {
+    tagList: initTags,
+}
 
 const store = configureStore({
     reducer: {
         tagList: tagsSlice,
     },
     // devTools
-    // preloadedState
+    preloadedState,
 })
 
 export type RootState = ReturnType<typeof store.getState>
