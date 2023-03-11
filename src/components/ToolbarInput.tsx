@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { addTags, setTags } from '../features/tagsSlice'
-import { RootState } from '../store/store'
+import store, { RootState } from '../store/store'
 
 interface Props {
     inputRef: React.RefObject<HTMLTextAreaElement>
@@ -10,7 +10,7 @@ function ToolbarInput({ inputRef }: Props) {
     const dispatch = useDispatch()
 
     // TODO проверить - а надо ли нам тут привязываться к обновлению стейта каждый раз???
-    const tags = useSelector((state: RootState) => state.tagList.tags)
+    // const tags = useSelector((state: RootState) => state.tagList.tags)
 
     return (
         <div className='flex space-x-2'>
@@ -50,8 +50,11 @@ function ToolbarInput({ inputRef }: Props) {
             <button
                 className='button'
                 onClick={(e) => {
+                    const tags = store.getState().tagList.tags
+
                     const a = tags.map((tag) => tag.text)
                     inputRef.current!.value = a.join(', ')
+
                     // const a = tags.reduce(
                     //     (accumulator: string[], currentValue) => {
                     //         accumulator.push(currentValue.text)

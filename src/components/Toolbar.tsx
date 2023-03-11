@@ -8,6 +8,7 @@ import {
     filterInTags,
     filterOutTags,
 } from '../features/tagsSlice'
+import store from '../store/store'
 
 function Toolbar() {
     const dispatch = useDispatch()
@@ -25,9 +26,11 @@ function Toolbar() {
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(copyTags())
-                    // const clip = useSelector
-                    // if (clip) navigator.clipboard.writeText(clip)
+                    const tags = store.getState().tagList.tags
+                    if (tags.length) {
+                        const a = tags.map((tag) => tag.text)
+                        navigator.clipboard.writeText(a.join('\r\n'))
+                    }
                 }}
             >
                 Copy

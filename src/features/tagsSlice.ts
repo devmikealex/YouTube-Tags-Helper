@@ -69,8 +69,14 @@ export const tagsSlice = createSlice({
         sortLenTags: (state) => {
             state.tags.sort((a, b) => a.text.length - b.text.length)
         },
-        removeDupTags: (state) => {
-            // -----
+        removeDupTags: (state, action: PayloadAction<string>) => {
+            const seen = new Set()
+            state.tags = state.tags.filter((tag) => {
+                const text = tag.text.toLocaleLowerCase()
+                const duplicate = seen.has(text)
+                seen.add(text)
+                return !duplicate
+            })
         },
         filterInTags: (state, action: PayloadAction<string>) => {
             state.tags = state.tags.filter((tag) =>

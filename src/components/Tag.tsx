@@ -5,6 +5,8 @@ import { ITag } from '../features/tagsSlice'
 interface TagProps extends ITag {}
 
 function Tag(props: TagProps): JSX.Element {
+    // console.log('R', props.id)
+
     const dispatch = useDispatch()
 
     return (
