@@ -8,6 +8,8 @@ interface Props {
 
 function ToolbarInput({ inputRef }: Props) {
     const dispatch = useDispatch()
+
+    // TODO проверить - а надо ли нам тут привязываться к обновлению стейта каждый раз???
     const tags = useSelector((state: RootState) => state.tagList.tags)
 
     return (
@@ -23,8 +25,8 @@ function ToolbarInput({ inputRef }: Props) {
             <button
                 className='button'
                 onClick={(e) => {
-                    const a = inputRef.current!.value
-                    if (a) navigator.clipboard.writeText(a)
+                    const clip = inputRef.current!.value
+                    if (clip) navigator.clipboard.writeText(clip)
                 }}
             >
                 Copy
@@ -50,6 +52,13 @@ function ToolbarInput({ inputRef }: Props) {
                 onClick={(e) => {
                     const a = tags.map((tag) => tag.text)
                     inputRef.current!.value = a.join(', ')
+                    // const a = tags.reduce(
+                    //     (accumulator: string[], currentValue) => {
+                    //         accumulator.push(currentValue.text)
+                    //         return accumulator
+                    //     },
+                    //     []
+                    // )
                 }}
             >
                 Get

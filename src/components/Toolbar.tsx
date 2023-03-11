@@ -1,10 +1,23 @@
+import { useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    clearTags,
+    sortTags,
+    sortLenTags,
+    removeDupTags,
+    filterInTags,
+    filterOutTags,
+} from '../features/tagsSlice'
+
 function Toolbar() {
+    const dispatch = useDispatch()
+    const inputRef = useRef<HTMLInputElement>(null)
     return (
         <div className='flex space-x-2 mt-1'>
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(clearTags())
+                    dispatch(clearTags())
                 }}
             >
                 Clear
@@ -12,7 +25,17 @@ function Toolbar() {
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(sortTags())
+                    // dispatch(copyTags())
+                    // const clip = useSelector
+                    // if (clip) navigator.clipboard.writeText(clip)
+                }}
+            >
+                Copy
+            </button>
+            <button
+                className='button'
+                onClick={(e) => {
+                    dispatch(sortTags())
                 }}
             >
                 Sort
@@ -20,7 +43,7 @@ function Toolbar() {
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(sortLenTags())
+                    dispatch(sortLenTags())
                 }}
             >
                 SortLen
@@ -28,7 +51,7 @@ function Toolbar() {
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(removeDupTags())
+                    dispatch(removeDupTags())
                 }}
             >
                 RemDup
@@ -36,7 +59,7 @@ function Toolbar() {
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(filterInTags(?????????))
+                    dispatch(filterInTags(inputRef.current!.value))
                 }}
             >
                 Filter IN
@@ -44,19 +67,17 @@ function Toolbar() {
             <button
                 className='button'
                 onClick={(e) => {
-                    // dispatch(filterOutTags(?????????))
+                    dispatch(filterOutTags(inputRef.current!.value))
                 }}
             >
                 Filter OUT
             </button>
-            <button
-                className='button'
-                onClick={(e) => {
-                    // dispatch(copyTags())
-                }}
-            >
-                Copy
-            </button>
+            <input
+                className='px-2 py-0 mt-1 w-full rounded-xl'
+                type='text'
+                placeholder='filter'
+                ref={inputRef}
+            />
         </div>
     )
 }

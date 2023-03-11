@@ -24,6 +24,9 @@ export const initTags: TagsState = {
         { text: '123', id: genGetID.next().value },
         { text: 'React', id: genGetID.next().value },
         { text: 'программист', id: genGetID.next().value },
+        { text: 'java', id: genGetID.next().value },
+        { text: 'JavaScript', id: genGetID.next().value },
+        { text: 'Программист', id: genGetID.next().value },
     ],
 }
 
@@ -57,8 +60,40 @@ export const tagsSlice = createSlice({
             const newTags = state.tags.filter((tag) => tag.id !== id)
             state.tags = newTags
         },
+        clearTags: (state) => {
+            state.tags = []
+        },
+        sortTags: (state) => {
+            state.tags.sort((a, b) => a.text.localeCompare(b.text))
+        },
+        sortLenTags: (state) => {
+            state.tags.sort((a, b) => a.text.length - b.text.length)
+        },
+        removeDupTags: (state) => {
+            // -----
+        },
+        filterInTags: (state, action: PayloadAction<string>) => {
+            state.tags = state.tags.filter((tag) =>
+                tag.text.toLocaleLowerCase().includes(action.payload)
+            )
+        },
+        filterOutTags: (state, action: PayloadAction<string>) => {
+            state.tags = state.tags.filter(
+                (tag) => !tag.text.toLocaleLowerCase().includes(action.payload)
+            )
+        },
     },
 })
 
-export const { setTags, removeTag, addTags } = tagsSlice.actions
+export const {
+    setTags,
+    removeTag,
+    addTags,
+    clearTags,
+    sortTags,
+    sortLenTags,
+    removeDupTags,
+    filterInTags,
+    filterOutTags,
+} = tagsSlice.actions
 export default tagsSlice.reducer
