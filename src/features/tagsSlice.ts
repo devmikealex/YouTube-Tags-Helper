@@ -69,7 +69,7 @@ export const tagsSlice = createSlice({
         sortLenTags: (state) => {
             state.tags.sort((a, b) => a.text.length - b.text.length)
         },
-        removeDupTags: (state, action: PayloadAction<string>) => {
+        removeDupTags: (state) => {
             const seen = new Set()
             state.tags = state.tags.filter((tag) => {
                 const text = tag.text.toLocaleLowerCase()

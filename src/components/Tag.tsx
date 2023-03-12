@@ -11,7 +11,8 @@ function Tag(props: TagProps): JSX.Element {
 
     return (
         <div className='bg-red-600 rounded-xl inline-block m-1 py-1 px-3 text-white'>
-            {props.text} - {props.id}
+            {/* {props.text} - {props.id} */}
+            {props.text}
             <span
                 className='ml-1 cursor-pointer'
                 onClick={() => dispatch(removeTag(props.id))}

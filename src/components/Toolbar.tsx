@@ -14,7 +14,7 @@ function Toolbar() {
     const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null)
     return (
-        <div className='flex space-x-2 mt-1'>
+        <div className='flex space-x-2'>
             <button
                 className='button'
                 onClick={(e) => {
@@ -59,28 +59,30 @@ function Toolbar() {
             >
                 RemDup
             </button>
-            <button
-                className='button'
-                onClick={(e) => {
-                    dispatch(filterInTags(inputRef.current!.value))
-                }}
-            >
-                Filter IN
-            </button>
-            <button
-                className='button'
-                onClick={(e) => {
-                    dispatch(filterOutTags(inputRef.current!.value))
-                }}
-            >
-                Filter OUT
-            </button>
-            <input
-                className='px-2 py-0 mt-1 w-full rounded-xl'
-                type='text'
-                placeholder='filter'
-                ref={inputRef}
-            />
+            <div className='rounded-xl bg-rose-300 p-1 flex space-x-1'>
+                <button
+                    className='button mt-0'
+                    onClick={(e) => {
+                        dispatch(filterInTags(inputRef.current!.value))
+                    }}
+                >
+                    FilterIN
+                </button>
+                <button
+                    className='button mt-0'
+                    onClick={(e) => {
+                        dispatch(filterOutTags(inputRef.current!.value))
+                    }}
+                >
+                    FilterOUT
+                </button>
+                <input
+                    className='px-2 py-0 rounded-xl w-28'
+                    type='text'
+                    placeholder='filter'
+                    ref={inputRef}
+                />
+            </div>
         </div>
     )
 }
