@@ -5,7 +5,7 @@ import Tag from './Tag'
 function TagsList(): JSX.Element {
     const tags = useSelector((state: RootState) => state.tagList.tags)
     return (
-        <div className='mt-1'>
+        <div className='mt-4'>
             {/* {tags.length} */}
             {tags.map((tag) => {
                 return <Tag key={tag.id} {...tag} />

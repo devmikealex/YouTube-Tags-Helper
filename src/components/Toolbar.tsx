@@ -14,9 +14,9 @@ function Toolbar() {
     const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null)
     return (
-        <div className='flex space-x-2'>
+        <div className='flex items-center justify-center mb-2'>
             <button
-                className='button'
+                className='button rounded-l-lg'
                 onClick={(e) => {
                     dispatch(clearTags())
                 }}
@@ -52,16 +52,16 @@ function Toolbar() {
                 SortLen
             </button>
             <button
-                className='button'
+                className='button rounded-r-lg'
                 onClick={(e) => {
                     dispatch(removeDupTags())
                 }}
             >
                 RemDup
             </button>
-            <div className='rounded-xl bg-rose-300 p-1 flex space-x-1'>
+            <div className='flex items-center justify-center ml-4'>
                 <button
-                    className='button mt-0'
+                    className='button rounded-l-lg'
                     onClick={(e) => {
                         dispatch(filterInTags(inputRef.current!.value))
                     }}
@@ -69,7 +69,7 @@ function Toolbar() {
                     FilterIN
                 </button>
                 <button
-                    className='button mt-0'
+                    className='button'
                     onClick={(e) => {
                         dispatch(filterOutTags(inputRef.current!.value))
                     }}
@@ -77,7 +77,8 @@ function Toolbar() {
                     FilterOUT
                 </button>
                 <input
-                    className='px-2 py-0 rounded-xl w-28'
+                    // className='px-2 py-0 rounded-xl w-28'
+                    className='input rounded-r-lg w-32'
                     type='text'
                     placeholder='filter'
                     ref={inputRef}

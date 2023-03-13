@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-    .button {
+    .button_old {
         @apply bg-indigo-300 rounded-xl w-full mt-1 py-1 px-3 hover:bg-slate-400
+    }
+    .input {
+        @apply px-4 py-2 text-gray-900 bg-white border border-gray-500 -ml-[1px]
+    }
+    .button {
+        @apply input hover:bg-gray-100
     }
 }

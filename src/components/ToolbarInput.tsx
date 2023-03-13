@@ -13,9 +13,9 @@ function ToolbarInput({ inputRef }: Props) {
     // const tags = useSelector((state: RootState) => state.tagList.tags)
 
     return (
-        <div className='flex space-x-2'>
+        <div className='flex items-center justify-center'>
             <button
-                className='button'
+                className='button rounded-l-lg'
                 onClick={(e) => {
                     inputRef.current!.value = ''
                 }}
@@ -48,7 +48,7 @@ function ToolbarInput({ inputRef }: Props) {
                 Add
             </button>
             <button
-                className='button'
+                className='button rounded-r-lg'
                 onClick={(e) => {
                     const tags = store.getState().tagList.tags
 
