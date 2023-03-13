@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tagsSlice, { ITag, initTags } from '../features/tagsSlice'
+import tagsSlice, { initTags } from '../features/tagsSlice'
+import settingsSlice from '../features/SettingsSlice'
 
 const preloadedState = {
     tagList: initTags,
@@ -8,6 +9,7 @@ const preloadedState = {
 const store = configureStore({
     reducer: {
         tagList: tagsSlice,
+        settings: settingsSlice,
     },
     // devTools
     preloadedState,
