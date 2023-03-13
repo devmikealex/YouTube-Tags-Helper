@@ -8,6 +8,7 @@
 ## Технологии проекта
 
 - TypeScript
+- React
 - Redux Toolkit
 - Tailwind CSS
 

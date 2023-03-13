@@ -4,3 +4,4 @@
 - Хелп
 - ридми
 - save/load
+- favicon
