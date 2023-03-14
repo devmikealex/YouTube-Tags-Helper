@@ -16,7 +16,7 @@ function Tag(props: TagProps): JSX.Element {
         <div
             className={
                 classLine +
-                ' items-center px-2 py-1 mb-1 mr-2 text-black bg-red-100 rounded'
+                ' items-center px-2 py-1 mb-1 mr-2 text-black bg-red-100 rounded-lg'
             }
         >
             {props.text}

@@ -74,7 +74,7 @@ export const tagsSlice = createSlice({
             state.tags = state.tags.filter((tag) => {
                 const text = tag.text.toLocaleLowerCase()
                 const duplicate = seen.has(text)
-                seen.add(text)
+                if (!duplicate) seen.add(text)
                 return !duplicate
             })
         },

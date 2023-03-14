@@ -3,12 +3,12 @@ import Toolbar from './Toolbar'
 
 function TagsOutput() {
     return (
-        <div className='m-2'>
-            <div className='mt-6 p-4 bg-white border border-gray-300 rounded-lg shadow'>
-                <Toolbar />
-                <TagsList />
-            </div>
+        // <div className=''>
+        <div className='card mt-6'>
+            <Toolbar />
+            <TagsList />
         </div>
+        // </div>
     )
 }
 

@@ -4,7 +4,7 @@ import ToolbarInput from './ToolbarInput'
 function TagsInput(): JSX.Element {
     const inputRef = useRef<HTMLTextAreaElement>(null)
     return (
-        <div className='m-2 p-4 border border-gray-300 bg-white rounded-lg shadow'>
+        <div className='card'>
             {/* <p>Tag List:</p> */}
             <ToolbarInput inputRef={inputRef} />
             <textarea
