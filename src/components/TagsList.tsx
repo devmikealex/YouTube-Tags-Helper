@@ -2,21 +2,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLineByLine } from '../features/SettingsSlice'
 import { RootState } from '../store/store'
 import Tag from './Tag'
+import TagsCount from './TagsCount'
+import Toggle from './Toggle'
 
 function TagsList(): JSX.Element {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const tags = useSelector((state: RootState) => state.tagList.tags)
+    // const LineByLine = useSelector((state: RootState) => state.settings.LineByLine)
     return (
         <div className='mt-4'>
-            <div className='mb-1'>
-                <input
+            <div className='flex'>
+                {/* <input
                     type='checkbox'
                     id='LineByLine'
+                    checked={LineByLine}
                     onChange={(e) => {
                         dispatch(setLineByLine())
                     }}
                 />
-                <label htmlFor='LineByLine'> Line By Line</label>
+                <label htmlFor='LineByLine'> Line By Line</label> */}
+                <Toggle />
+                <TagsCount />
             </div>
             {tags.map((tag) => {
                 return <Tag key={tag.id} {...tag} />

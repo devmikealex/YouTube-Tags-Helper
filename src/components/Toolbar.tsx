@@ -9,6 +9,7 @@ import {
     filterOutTags,
 } from '../features/tagsSlice'
 import store from '../store/store'
+import Toggle from './Toggle'
 
 function Toolbar() {
     const dispatch = useDispatch()
