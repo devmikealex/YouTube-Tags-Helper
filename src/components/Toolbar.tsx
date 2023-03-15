@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { setLineByLine } from '../features/SettingsSlice'
 import {
     clearTags,
     sortTags,
@@ -8,17 +9,23 @@ import {
     filterInTags,
     filterOutTags,
 } from '../features/tagsSlice'
-import store from '../store/store'
+import store, { RootState } from '../store/store'
+import TagsCount from './TagsCount'
 import Toggle from './Toggle'
 
 function Toolbar() {
     const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null)
+
     return (
         <div className='items-center justify-center lg:flex'>
             <div className='flex items-center justify-center mb-1 lg:mb-0'>
+                <div className='button rounded-l-lg bg-red-100 hover:bg-red-100'>
+                    <TagsCount />
+                </div>
                 <button
-                    className='button rounded-l-lg'
+                    // className='button rounded-l-lg'
+                    className='button'
                     onClick={(e) => {
                         dispatch(clearTags())
                     }}

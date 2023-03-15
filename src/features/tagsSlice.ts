@@ -72,7 +72,8 @@ export const tagsSlice = createSlice({
         removeDupTags: (state) => {
             const seen = new Set()
             state.tags = state.tags.filter((tag) => {
-                const text = tag.text.toLocaleLowerCase()
+                // const text = tag.text.toLocaleLowerCase()
+                const text = tag.text
                 const duplicate = seen.has(text)
                 if (!duplicate) seen.add(text)
                 return !duplicate

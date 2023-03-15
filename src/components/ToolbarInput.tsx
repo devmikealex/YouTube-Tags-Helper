@@ -9,9 +9,6 @@ interface Props {
 function ToolbarInput({ inputRef }: Props) {
     const dispatch = useDispatch()
 
-    // TODO проверить - а надо ли нам тут привязываться к обновлению стейта каждый раз???
-    // const tags = useSelector((state: RootState) => state.tagList.tags)
-
     return (
         <div className='flex items-center justify-center'>
             <button

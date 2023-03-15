@@ -4,7 +4,7 @@ import Toolbar from './Toolbar'
 function TagsOutput() {
     return (
         // <div className=''>
-        <div className='card mt-6'>
+        <div className='card '>
             <Toolbar />
             <TagsList />
         </div>
