@@ -14,9 +14,10 @@ function TagsList(): JSX.Element {
         dispatch(setLineByLine())
     }
     const LineByLine = useSelector((state: RootState) => state.settings.LineByLine)
+    const classLine = LineByLine ? 'flex flex-col' : 'flex flex-wrap'
 
     return (
-        <div className='mt-4'>
+        <div className={classLine + ' mt-4 gap-2'}>
             {/* <div className='flex'> */}
             {/* <input
                     type='checkbox'

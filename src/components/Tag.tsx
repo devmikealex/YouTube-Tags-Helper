@@ -10,14 +10,14 @@ function Tag(props: TagProps): JSX.Element {
     // console.log('R', props.id)
 
     const dispatch = useDispatch()
-    const LineByLine = useSelector((state: RootState) => state.settings.LineByLine)
-    const classLine = LineByLine ? 'flex' : 'inline-flex'
+    // const LineByLine = useSelector((state: RootState) => state.settings.LineByLine)
+    // const classLine = LineByLine ? 'flex' : 'inline-flex'
 
     return (
         <div
             className={
-                classLine +
-                ' items-center px-2 py-1 mb-1 mr-2 text-lg font-mono text-black bg-red-100 rounded-lg'
+                // classLine +
+                'flex items-center px-2 py-1 text-lg font-mono text-black bg-red-100 rounded-lg'
             }
         >
             {/* <span className='-translate-y-0'>{props.text}</span> */}

@@ -20,7 +20,7 @@ function Toolbar() {
     return (
         <div className='items-center justify-center lg:flex'>
             <div className='flex items-center justify-center mb-1 lg:mb-0'>
-                <div className='button rounded-l-lg bg-red-100 hover:bg-red-100'>
+                <div className='button font-bold rounded-l-lg bg-red-100 hover:bg-red-100'>
                     <TagsCount />
                 </div>
                 <button
