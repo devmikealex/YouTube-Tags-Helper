@@ -23,7 +23,7 @@ function Tag(props: TagProps): JSX.Element {
             {/* <span className='-translate-y-0'>{props.text}</span> */}
             {props.text}
             <button
-                className='flex p-0.5 ml-1 text-red-500 rounded-sm hover:bg-red-400 hover:text-white'
+                className='flex p-0.5 ml-1 text-red-500 rounded hover:bg-red-400 hover:text-white'
                 onClick={() => dispatch(removeTag(props.id))}
             >
                 {/* TODO надо ссылаться на один крестик */}

@@ -40,9 +40,13 @@ export const tagsSlice = createSlice({
     reducers: {
         setTags: (state, action: PayloadAction<string>) => {
             if (action.payload) {
-                const tags = action.payload.split(', ')
+                let tags: string[]
+
+                if (action.payload.includes(', ')) tags = action.payload.split(', ')
+                else tags = action.payload.split('\n')
+
                 state.tags = tags.map((tagText): ITag => {
-                    return { text: tagText, id: genGetID.next().value }
+                    return { text: tagText.trim(), id: genGetID.next().value }
                 })
             }
         },
