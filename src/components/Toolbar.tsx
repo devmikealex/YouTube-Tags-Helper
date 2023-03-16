@@ -10,6 +10,7 @@ import {
     filterOutTags,
 } from '../features/tagsSlice'
 import store, { RootState } from '../store/store'
+import createToast from '../utils/createToast'
 import TagsCount from './TagsCount'
 import Toggle from './Toggle'
 
@@ -38,7 +39,9 @@ function Toolbar() {
                         const tags = store.getState().tagList.tags
                         if (tags.length) {
                             const a = tags.map((tag) => tag.text)
-                            navigator.clipboard.writeText(a.join('\r\n'))
+                            const out = a.join('\r\n')
+                            navigator.clipboard.writeText(out)
+                            createToast(`Copy - ${out}`, dispatch)
                         }
                     }}
                 >

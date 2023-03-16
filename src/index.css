@@ -22,3 +22,25 @@ body {
         @apply input hover:bg-gray-100;
     }
 }
+.animation-in {
+    animation: fadein 5s ease-in-out;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(1%);
+    }
+    90% {
+        opacity: 1;
+        transform: translateX(1%);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}

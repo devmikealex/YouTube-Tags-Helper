@@ -1,9 +1,8 @@
 import './App.css'
 import Settings from './components/Settings'
-import TagsCount from './components/TagsCount'
 import TagsInput from './components/TagsInput'
 import TagsOutput from './components/TagsOutput'
-import Toast from './components/Toast'
+import ToastsList from './components/ToastsList'
 
 function App() {
     return (
@@ -14,7 +13,7 @@ function App() {
             <TagsInput />
             <Settings />
             <TagsOutput />
-            <Toast message='Test message for Toast' />
+            <ToastsList />
         </div>
     )
 }
