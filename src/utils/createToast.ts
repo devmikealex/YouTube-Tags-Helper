@@ -7,7 +7,7 @@ export default function createToast(message: string, dispatch: Function) {
     // const id = Date.now()
     // message = message + id
     const id = genGetID.next().value
-    message = message.slice(0, 100) + '...'
+    if (message.length > 100) message = message.slice(0, 100) + '...'
     const toast: IToast = { message, id }
     dispatch(addToast(toast))
     setTimeout(() => {

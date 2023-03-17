@@ -39,9 +39,9 @@ function Toolbar() {
                         const tags = store.getState().tagList.tags
                         if (tags.length) {
                             const a = tags.map((tag) => tag.text)
-                            const out = a.join('\r\n')
-                            navigator.clipboard.writeText(out)
-                            createToast(`Copy - ${out}`, dispatch)
+                            // const out = a.join('\r\n')
+                            navigator.clipboard.writeText(a.join('\r\n'))
+                            createToast(`Copy - ${a.join(' / ')}`, dispatch)
                         }
                     }}
                 >
@@ -66,7 +66,10 @@ function Toolbar() {
                 <button
                     className='button rounded-r-lg'
                     onClick={(e) => {
+                        const tags_old = store.getState().tagList.tags.length
                         dispatch(removeDupTags())
+                        const tags = store.getState().tagList.tags.length
+                        createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
                     }}
                 >
                     RemDup
@@ -76,7 +79,10 @@ function Toolbar() {
                 <button
                     className='button rounded-l-lg'
                     onClick={(e) => {
+                        const tags_old = store.getState().tagList.tags.length
                         dispatch(filterInTags(inputRef.current!.value))
+                        const tags = store.getState().tagList.tags.length
+                        createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
                     }}
                 >
                     FilterIN
@@ -84,7 +90,10 @@ function Toolbar() {
                 <button
                     className='button'
                     onClick={(e) => {
+                        const tags_old = store.getState().tagList.tags.length
                         dispatch(filterOutTags(inputRef.current!.value))
+                        const tags = store.getState().tagList.tags.length
+                        createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
                     }}
                 >
                     FilterOUT

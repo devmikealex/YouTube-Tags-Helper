@@ -8,7 +8,7 @@ function Toast(props: IToast) {
     return (
         <div className='animation-in max-w-max flex items-center w-full p-4 text-gray-50 bg-indigo-600 rounded-lg shadow-lg dark:text-gray-400 dark:bg-gray-800'>
             <div className='inline-flex items-center justify-center flex-shrink-0 w-8 h-8 dark:bg-blue-800 dark:text-blue-200'>
-                <img src='./public/favicon.png' alt='logo' />
+                <img src='./favicon.png' alt='logo' />
             </div>
             <div className='ml-3 font-normal'>{props.message}</div>
             <button

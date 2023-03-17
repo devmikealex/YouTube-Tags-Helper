@@ -23,24 +23,18 @@ body {
     }
 }
 .animation-in {
-    animation: fadein 5s ease-in-out;
+    animation: fadein 5s ease-in-out forwards;
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    10% {
-        opacity: 1;
-        transform: translateX(1%);
-    }
-    90% {
-        opacity: 1;
-        transform: translateX(1%);
-    }
+    from,
     to {
         opacity: 0;
         transform: translateX(100%);
+    }
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateX(0%);
     }
 }
