@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLineByLine } from '../features/SettingsSlice'
 import {
     clearTags,
     sortTags,
@@ -9,10 +8,9 @@ import {
     filterInTags,
     filterOutTags,
 } from '../features/tagsSlice'
-import store, { RootState } from '../store/store'
+import store from '../store/store'
 import createToast from '../utils/createToast'
 import TagsCount from './TagsCount'
-import Toggle from './Toggle'
 
 function Toolbar() {
     const dispatch = useDispatch()

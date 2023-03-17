@@ -15,18 +15,21 @@ const genGetID = getID(100)
 
 export const initTags: TagsState = {
     tags: [
-        { text: 'JavaScript', id: genGetID.next().value },
-        { text: 'Element 3D', id: genGetID.next().value },
-        { text: 'русский', id: genGetID.next().value },
-        { text: 'урок', id: genGetID.next().value },
-        { text: 'окно на чердак', id: genGetID.next().value },
-        { text: '46546465', id: genGetID.next().value },
-        { text: '123', id: genGetID.next().value },
+        { text: 'TypeScript', id: genGetID.next().value },
         { text: 'React', id: genGetID.next().value },
-        { text: 'программист', id: genGetID.next().value },
-        { text: 'java', id: genGetID.next().value },
+        { text: 'CSS', id: genGetID.next().value },
+        { text: 'Node', id: genGetID.next().value },
+        { text: 'ECMAScript', id: genGetID.next().value },
+        { text: 'JavaScript уроки', id: genGetID.next().value },
+        { text: 'уроки для начинающих', id: genGetID.next().value },
+        { text: 'javascript собеседование', id: genGetID.next().value },
+        { text: 'typescript vs javascript', id: genGetID.next().value },
+        { text: 'React интернет магазин', id: genGetID.next().value },
         { text: 'JavaScript', id: genGetID.next().value },
-        { text: 'Программист', id: genGetID.next().value },
+        { text: 'верстка сайта для начинающих', id: genGetID.next().value },
+        { text: 'CSS за час', id: genGetID.next().value },
+        { text: 'ООП простыми словами', id: genGetID.next().value },
+        { text: 'node js что это', id: genGetID.next().value },
     ],
 }
 
