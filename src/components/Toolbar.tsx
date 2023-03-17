@@ -11,6 +11,7 @@ import {
 import store from '../store/store'
 import createToast from '../utils/createToast'
 import TagsCount from './TagsCount'
+import Tooltip from './Tooltip'
 
 function Toolbar() {
     const dispatch = useDispatch()
@@ -22,80 +23,94 @@ function Toolbar() {
                 <div className='button font-bold rounded-l-lg bg-red-100 hover:bg-red-100'>
                     <TagsCount />
                 </div>
-                <button
-                    // className='button rounded-l-lg'
-                    className='button'
-                    onClick={(e) => {
-                        dispatch(clearTags())
-                    }}
-                >
-                    Clear
-                </button>
-                <button
-                    className='button'
-                    onClick={(e) => {
-                        const tags = store.getState().tagList.tags
-                        if (tags.length) {
-                            const a = tags.map((tag) => tag.text)
-                            // const out = a.join('\r\n')
-                            navigator.clipboard.writeText(a.join('\r\n'))
-                            createToast(`Copy - ${a.join(' / ')}`, dispatch)
-                        }
-                    }}
-                >
-                    Copy
-                </button>
-                <button
-                    className='button'
-                    onClick={(e) => {
-                        dispatch(sortTags())
-                    }}
-                >
-                    Sort
-                </button>
-                <button
-                    className='button'
-                    onClick={(e) => {
-                        dispatch(sortLenTags())
-                    }}
-                >
-                    SortLen
-                </button>
-                <button
-                    className='button rounded-r-lg'
-                    onClick={(e) => {
-                        const tags_old = store.getState().tagList.tags.length
-                        dispatch(removeDupTags())
-                        const tags = store.getState().tagList.tags.length
-                        createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
-                    }}
-                >
-                    RemDup
-                </button>
+                <Tooltip text='Clear the tag field'>
+                    <button
+                        // className='button rounded-l-lg'
+                        className='button'
+                        onClick={(e) => {
+                            dispatch(clearTags())
+                        }}
+                    >
+                        Clear
+                    </button>
+                </Tooltip>
+                <Tooltip text='Copy tags to the clipboard'>
+                    <button
+                        className='button'
+                        onClick={(e) => {
+                            const tags = store.getState().tagList.tags
+                            if (tags.length) {
+                                const a = tags.map((tag) => tag.text)
+                                // const out = a.join('\r\n')
+                                navigator.clipboard.writeText(a.join('\r\n'))
+                                createToast(`Copy - ${a.join(' / ')}`, dispatch)
+                            }
+                        }}
+                    >
+                        Copy
+                    </button>
+                </Tooltip>
+                <Tooltip text='Sort tags alphabetically'>
+                    <button
+                        className='button'
+                        onClick={(e) => {
+                            dispatch(sortTags())
+                        }}
+                    >
+                        Sort
+                    </button>
+                </Tooltip>
+                <Tooltip text='Sort tags by number of characters'>
+                    <button
+                        className='button'
+                        onClick={(e) => {
+                            dispatch(sortLenTags())
+                        }}
+                    >
+                        SortLen
+                    </button>
+                </Tooltip>
+                <Tooltip text='Remove duplicate tags'>
+                    <button
+                        className='button rounded-r-lg'
+                        onClick={(e) => {
+                            const tags_old = store.getState().tagList.tags.length
+                            dispatch(removeDupTags())
+                            const tags = store.getState().tagList.tags.length
+                            createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                        }}
+                    >
+                        RemDup
+                    </button>
+                </Tooltip>
             </div>
             <div className='flex items-center justify-center ml-4'>
-                <button
-                    className='button rounded-l-lg'
-                    onClick={(e) => {
-                        const tags_old = store.getState().tagList.tags.length
-                        dispatch(filterInTags(inputRef.current!.value))
-                        const tags = store.getState().tagList.tags.length
-                        createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
-                    }}
-                >
-                    FilterIN
-                </button>
-                <button
-                    className='button'
-                    onClick={(e) => {
-                        const tags_old = store.getState().tagList.tags.length
-                        dispatch(filterOutTags(inputRef.current!.value))
-                        const tags = store.getState().tagList.tags.length
-                        createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
-                    }}
-                >
-                    FilterOUT
-                </button>
+                <Tooltip text='Save tags containing text'>
+                    <button
+                        className='button rounded-l-lg'
+                        onClick={(e) => {
+                            const tags_old = store.getState().tagList.tags.length
+                            dispatch(filterInTags(inputRef.current!.value))
+                            const tags = store.getState().tagList.tags.length
+                            createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                        }}
+                    >
+                        FilterIN
+                    </button>
+                </Tooltip>
+                <Tooltip text='Delete tags containing text'>
+                    <button
+                        className='button'
+                        onClick={(e) => {
+                            const tags_old = store.getState().tagList.tags.length
+                            dispatch(filterOutTags(inputRef.current!.value))
+                            const tags = store.getState().tagList.tags.length
+                            createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                        }}
+                    >
+                        FilterOUT
+                    </button>
+                </Tooltip>
                 <input
                     // className='px-2 py-0 rounded-xl w-28'
                     className='input rounded-r-lg w-32'

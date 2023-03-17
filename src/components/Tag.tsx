@@ -17,7 +17,7 @@ function Tag(props: TagProps): JSX.Element {
         <div
             className={
                 // classLine +
-                'flex items-center px-2 py-1 text-lg font-mono text-black bg-red-100 rounded-lg'
+                'flex items-center px-2 py-1 text-lg font-mono border border-rose-400 text-black bg-red-100 rounded-lg'
             }
         >
             {/* <span className='-translate-y-0'>{props.text}</span> */}
