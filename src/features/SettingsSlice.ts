@@ -12,8 +12,14 @@ export const settingsSlice = createSlice({
         setLineByLine: (state) => {
             state.LineByLine = !state.LineByLine
         },
+        resetSettings: () => {
+            return initialState
+        },
+        loadSettings: (state, action: PayloadAction<typeof initialState>) => {
+            return (state = action.payload)
+        },
     },
 })
 
-export const { setLineByLine } = settingsSlice.actions
+export const { setLineByLine, resetSettings, loadSettings } = settingsSlice.actions
 export default settingsSlice.reducer

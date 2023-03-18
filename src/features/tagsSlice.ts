@@ -96,6 +96,12 @@ export const tagsSlice = createSlice({
                 (tag) => !tag.text.toLocaleLowerCase().includes(action.payload)
             )
         },
+        resetTags: () => {
+            return initTags
+        },
+        loadTags: (state, action: PayloadAction<TagsState>) => {
+            return (state = action.payload)
+        },
     },
 })
 
@@ -109,5 +115,7 @@ export const {
     removeDupTags,
     filterInTags,
     filterOutTags,
+    resetTags,
+    loadTags,
 } = tagsSlice.actions
 export default tagsSlice.reducer
