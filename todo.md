@@ -1,4 +1,5 @@
-- Хелп
 - ридми
-- save/load
-- хештеги #
+- Оформить save/load
+
+- хелп
+- копирвоание для http **window.isSecureContext**
