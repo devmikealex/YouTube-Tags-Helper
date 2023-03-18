@@ -59,7 +59,7 @@ function ToolbarInput({ inputRef }: Props) {
             </Tooltip>
             <Tooltip text='Convert tags to a string'>
                 <button
-                    className='button rounded-r-lg'
+                    className='button'
                     onClick={(e) => {
                         const tags = store.getState().tagList.tags
 
@@ -76,6 +76,27 @@ function ToolbarInput({ inputRef }: Props) {
                     }}
                 >
                     Get
+                </button>
+            </Tooltip>
+            <Tooltip text='Convert tags to hashtag string like #HashtagTips'>
+                <button
+                    className='button rounded-r-lg'
+                    onClick={(e) => {
+                        const tags = store.getState().tagList.tags
+
+                        const capitalize = (str: string) =>
+                            `${str.charAt(0).toUpperCase()}${str.slice(1)}`
+                        const capWords = (str: string) => {
+                            let words = str.split(' ')
+                            words = words.map((word) => capitalize(word))
+                            return words.join('')
+                        }
+
+                        const a = tags.map((tag) => '#' + capWords(tag.text))
+                        inputRef.current!.value = a.join(' ')
+                    }}
+                >
+                    Get#
                 </button>
             </Tooltip>
         </div>
