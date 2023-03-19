@@ -6,7 +6,11 @@ import createToast from '../utils/createToast'
 import { loadState, resetSavedState, saveState } from '../utils/localStorage'
 import Tooltip from './Tooltip'
 
-const style = 'hover:bg-indigo-200 py-1 px-2'
+interface Props {
+    className: string
+}
+
+const style = 'hover:bg-indigo-100 py-1 px-6 w-full'
 
 function save() {
     const tagsInput = document.querySelector('#tags-input') as HTMLTextAreaElement
@@ -30,11 +34,11 @@ function load(dispatch: Function): boolean {
     return true
 }
 
-function SaveLoad() {
+function SaveLoad(props: Props) {
     const dispatch = useDispatch()
 
     return (
-        <div>
+        <div className={props.className}>
             <Tooltip text='Save the state in the browser'>
                 <button
                     className={style}
