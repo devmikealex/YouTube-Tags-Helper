@@ -6,13 +6,14 @@ export interface ToggleProps {
     title: string
     checked: boolean
     onChangeHandler: Function
+    className?: string
 }
 
 function Toggle(props: ToggleProps) {
     // const dispatch = useDispatch()
     // const LineByLine = useSelector((state: RootState) => state.settings.LineByLine)
     return (
-        <div>
+        <div className={props.className}>
             <label className='relative inline-flex items-center cursor-pointer'>
                 <input
                     type='checkbox'

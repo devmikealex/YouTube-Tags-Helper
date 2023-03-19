@@ -1,16 +1,29 @@
 import { useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAutoCloseMenu } from '../features/SettingsSlice'
+import { RootState } from '../store/store'
 import ThreePoints from './icons/ThreePoints'
 import SaveLoad from './SaveLoad'
+import Toggle from './Toggle'
+import Tooltip from './Tooltip'
 
 function SpeedDial() {
     const menuRef = useRef<HTMLDivElement>(null)
+    const dispatch = useDispatch()
+
+    function onChangeHandlerAutoCloseMenu(e: React.ChangeEvent<HTMLInputElement>) {
+        dispatch(setAutoCloseMenu())
+    }
+
+    const AutoCloseMenu = useSelector((state: RootState) => state.settings.AutoCloseMenu)
 
     return (
         <div
             data-dial-init
             className='fixed top-4 right-4 group'
             onMouseLeave={(e) => {
-                if (menuRef.current) menuRef.current.classList.add('hidden')
+                if (menuRef.current && AutoCloseMenu)
+                    menuRef.current.classList.add('hidden')
             }}
         >
             <button
@@ -24,9 +37,17 @@ function SpeedDial() {
             <div
                 id='speed-dial-menu-dropdown'
                 ref={menuRef}
-                className='flex flex-col justify-start hidden py-1 mb-4 space-y-2 bg-white border border-gray-400 rounded-lg shadow-lg'
+                className='flex flex-col justify-start hidden py-1 mt-2 space-y-2 bg-white border border-gray-400 rounded-lg shadow-lg'
             >
                 <SaveLoad className='flex flex-col p-2' />
+                <Tooltip text='Close the menu automatically'>
+                    <Toggle
+                        className='px-2'
+                        title='Auto Close'
+                        checked={AutoCloseMenu}
+                        onChangeHandler={onChangeHandlerAutoCloseMenu}
+                    />
+                </Tooltip>
             </div>
         </div>
     )

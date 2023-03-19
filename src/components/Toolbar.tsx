@@ -74,8 +74,10 @@ function Toolbar() {
                     <button
                         className='button rounded-r-lg'
                         onClick={(e) => {
-                            const tags_old = store.getState().tagList.tags.length
-                            dispatch(removeDupTags())
+                            const oldState = store.getState()
+                            const tags_old = oldState.tagList.tags.length
+                            const CaseSensitive = oldState.settings.CaseSensitive
+                            dispatch(removeDupTags(CaseSensitive))
                             const tags = store.getState().tagList.tags.length
                             createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
                         }}

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import getID from '../utils/getid'
+import store from '../store/store'
 
 export interface ITag {
     text: string
@@ -76,15 +77,33 @@ export const tagsSlice = createSlice({
         sortLenTags: (state) => {
             state.tags.sort((a, b) => a.text.length - b.text.length)
         },
-        removeDupTags: (state) => {
+        removeDupTags: (state, action: PayloadAction<boolean>) => {
             const seen = new Set()
-            state.tags = state.tags.filter((tag) => {
-                // const text = tag.text.toLocaleLowerCase()
-                const text = tag.text
+            // state.tags = state.tags.filter((tag) => {
+            //     // const reduxStore = store.getState()
+            //     // let text
+            //     // if (reduxStore.settings.CaseSensitive) text = tag.text.toLocaleLowerCase()
+            //     // else text = tag.text
+            //     const text = tag.text.toLocaleLowerCase()
+
+            //     const duplicate = seen.has(text)
+            //     if (!duplicate) seen.add(text)
+            //     return !duplicate
+            // })
+            const CaseSensitive = action.payload
+            const newState = []
+            for (let i = state.tags.length - 1; i >= 0; i--) {
+                const tag = state.tags[i]
+                let text
+                if (CaseSensitive) text = tag.text.toLocaleLowerCase()
+                else text = tag.text
                 const duplicate = seen.has(text)
-                if (!duplicate) seen.add(text)
-                return !duplicate
-            })
+                if (!duplicate) {
+                    seen.add(text)
+                    newState.unshift(tag)
+                }
+            }
+            state.tags = newState
         },
         filterInTags: (state, action: PayloadAction<string>) => {
             state.tags = state.tags.filter((tag) =>

@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import tagsSlice, { initTags } from '../features/tagsSlice'
-import settingsSlice from '../features/SettingsSlice'
+import settingsSlice, { initSettings } from '../features/SettingsSlice'
 import toastsSlice, { initToasts } from '../features/toastsSlice'
 
 const preloadedState = {
     tagList: initTags,
+    settings: initSettings,
     toastsList: initToasts,
 }
 
