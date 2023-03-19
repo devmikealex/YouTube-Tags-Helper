@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { addTags, setTags } from '../features/tagsSlice'
 import store from '../store/store'
+import copyToClipboard from '../utils/copyToClipboard'
 import createToast from '../utils/createToast'
 import Tooltip from './Tooltip'
 
@@ -29,7 +30,8 @@ function ToolbarInput({ inputRef }: Props) {
                     onClick={(e) => {
                         const clip = inputRef.current!.value
                         if (clip) {
-                            navigator.clipboard.writeText(clip)
+                            // navigator.clipboard.writeText(clip)
+                            copyToClipboard(clip)
                             createToast(`Copy - ${clip}`, dispatch)
                         }
                     }}

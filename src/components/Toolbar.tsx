@@ -9,6 +9,7 @@ import {
     filterOutTags,
 } from '../features/tagsSlice'
 import store from '../store/store'
+import copyToClipboard from '../utils/copyToClipboard'
 import createToast from '../utils/createToast'
 import TagsCount from './TagsCount'
 import Tooltip from './Tooltip'
@@ -42,7 +43,8 @@ function Toolbar() {
                             if (tags.length) {
                                 const a = tags.map((tag) => tag.text)
                                 // const out = a.join('\r\n')
-                                navigator.clipboard.writeText(a.join('\r\n'))
+                                // navigator.clipboard.writeText(a.join('\r\n'))
+                                copyToClipboard(a.join('\r\n'))
                                 createToast(`Copy - ${a.join(' / ')}`, dispatch)
                             }
                         }}
