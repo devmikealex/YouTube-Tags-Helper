@@ -1,3 +1,2 @@
 - ридми
 - хелп
-- копирвоание для http **window.isSecureContext**
