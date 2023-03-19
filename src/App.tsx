@@ -4,7 +4,6 @@ import TagsInput from './components/TagsInput'
 import TagsOutput from './components/TagsOutput'
 import ToastsList from './components/ToastsList'
 import SpeedDial from './components/SpeedDial'
-import SaveLoad from './components/SaveLoad'
 
 function App() {
     return (
@@ -12,10 +11,9 @@ function App() {
             <h1 className='text-2xl font-medium text-center text-red-700'>
                 YouTube Tags Helper
             </h1>
-            <div className='text-center max-w-xl overflow-hidden mx-auto text-sm'>
+            <div className='text-center max-w-sm lg:max-w-xl overflow-hidden mx-auto text-sm'>
                 Useful utility for easy work with YouTube tags. It can automatically sort
                 tags, remove duplicates, convert lists from different separation formats.
-                {/* <SaveLoad /> */}
             </div>
             <TagsInput />
             <Settings />
