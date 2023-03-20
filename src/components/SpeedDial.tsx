@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAutoCloseMenu } from '../features/SettingsSlice'
 import { RootState } from '../store/store'
+import HelpModal from './HelpModal'
 import ThreePoints from './icons/ThreePoints'
 import SaveLoad from './SaveLoad'
 import Toggle from './Toggle'
@@ -26,14 +27,17 @@ function SpeedDial() {
                     menuRef.current.classList.add('hidden')
             }}
         >
-            <button
-                className='flex items-center justify-center ml-auto text-white bg-indigo-600 rounded-full w-10 h-10 hover:bg-indigo-700 focus:outline-none'
-                onClick={(e) => {
-                    if (menuRef.current) menuRef.current.classList.toggle('hidden')
-                }}
-            >
-                <ThreePoints w='w-6' h='h-6' />
-            </button>
+            <div className='flex justify-end'>
+                <HelpModal />
+                <button
+                    className='flex items-center justify-center text-white bg-indigo-600 rounded-full w-10 h-10 hover:bg-indigo-700 focus:outline-none'
+                    onClick={(e) => {
+                        if (menuRef.current) menuRef.current.classList.toggle('hidden')
+                    }}
+                >
+                    <ThreePoints w='w-6' h='h-6' />
+                </button>
+            </div>
             <div
                 id='speed-dial-menu-dropdown'
                 ref={menuRef}

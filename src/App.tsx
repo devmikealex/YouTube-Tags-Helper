@@ -4,10 +4,17 @@ import TagsInput from './components/TagsInput'
 import TagsOutput from './components/TagsOutput'
 import ToastsList from './components/ToastsList'
 import SpeedDial from './components/SpeedDial'
+import HelpModal from './components/HelpModal'
 
 function App() {
     return (
         <div className='m-2'>
+            {/* <div className='flex justify-center items-baseline space-x-2'>
+                <h1 className='text-2xl font-medium text-center text-red-700'>
+                    YouTube Tags Helper
+                </h1>
+                <HelpModal />
+            </div> */}
             <h1 className='text-2xl font-medium text-center text-red-700'>
                 YouTube Tags Helper
             </h1>
