@@ -4,7 +4,6 @@ import TagsInput from './components/TagsInput'
 import TagsOutput from './components/TagsOutput'
 import ToastsList from './components/ToastsList'
 import SpeedDial from './components/SpeedDial'
-import HelpModal from './components/HelpModal'
 
 function App() {
     return (

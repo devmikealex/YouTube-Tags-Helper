@@ -27,19 +27,26 @@ function HelpModal() {
             </button>
             <div
                 ref={modalRef}
-                className='flex fixed z-50 inset-0 bg-indigo-300 bg-opacity-80 opacity-100 duration-300 transition-opacity items-center justify-center'
+                style={{ opacity: 0, display: 'none' }}
+                className='flex fixed z-50 inset-0 bg-indigo-300 bg-opacity-80 duration-300 transition-opacity items-center justify-center'
                 onClick={hide}
             >
                 <div
-                    className='relative px-6 py-8 max-w-xl bg-white rounded-lg shadow-lg'
+                    className='relative px-4 py-9 pb-4 max-w-xl bg-white rounded-lg shadow-lg'
                     onClick={(e) => {
                         e.stopPropagation()
                     }}
                 >
-                    <div dangerouslySetInnerHTML={{ __html: html() }}></div>
+                    <div className='overflow-y-auto' style={{ height: '70vh' }}>
+                        <div
+                            className='px-2'
+                            // style={{ height: '60vh' }}
+                            dangerouslySetInnerHTML={{ __html: html() }}
+                        />
+                    </div>
                     <button
                         type='button'
-                        className='absolute right-1 top-1 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-indigo-100 inline-flex h-8 w-8'
+                        className='absolute right-2 top-1 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1 hover:bg-indigo-100 inline-flex h-7 w-7'
                         onClick={hide}
                     >
                         <CloseIcon w='w-5' h='h-5' />
@@ -54,9 +61,33 @@ export default HelpModal
 
 function html(): string {
     return `
-    <p>Lorem <b>ipsum dolor sit amet, consectetur</b> adipisicing elit. Fugiat hic vero repellat voluptates itaque ipsa, quis quisquam quaerat veritatis labore dolorum! Odio deleniti officiis dicta hic ipsa eveniet libero dolore?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat hic vero repellat voluptates itaque ipsa, quis quisquam quaerat veritatis labore dolorum! Odio deleniti officiis dicta hic ipsa eveniet libero dolore?</p>
-    <img src="./favicon.png" alt="logo" />
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat hic vero repellat voluptates itaque ipsa, quis quisquam quaerat veritatis labore dolorum! Odio deleniti officiis dicta hic ipsa eveniet libero dolore?</p>
+<h1 class='text-2xl text-center text-red-700'>Quick instruction</h1>
+
+<p>The user can enter an array of tags in the top field. It is allowed to
+separate tags with a comma and a space or to place each tag on a new line.
+Pressing the <b>Set / Add</b> buttons converts the tags to a working format
+at the bottom of the interface - <b>Set</b> replaces, <b>Add</b> adds to the set.</p>
+<p><img class="mx-auto" src="./docs/assets/set.jpg" alt="Set" /></p>
+
+<p>You can sort tags alphabetically or by length, remove duplicates with or
+without case, and filter by content.</p>
+<br/>
+<p>From the bottom of the interface set of tags is copied to the clipboard (<b>Copy</b> button) with the division into lines, one tag - one line.</p>
+<br/>
+<p>With the <b>Get</b> buttons, the top field gets a comma-separated set of tags.</p>
+<p>Using the <b>Get#</b> buttons, the top field gets a set of tags in the form of hashtags.</p>
+<p><img class="mx-auto" src="./docs/assets/hash.jpg" alt="hash" /></p>
+
+<p>In the upper right corner there is an additional menu button. Here you can
+save and restore the current state of the application, or clear the saved
+data. The data is stored in the browser's <b>localStorage</b>.</p>
+<p><img class="mx-auto" src="./docs/assets/menu.jpg" alt="Menu" /></p>
+
+<p><b>Line By Line</b> - tags can be displayed line by line for readability:
+one tag - one line</p>
+<p><b>Case Sensitive</b> - case sensitive when searching for duplicates</p>
+<p><b>Auto Close</b> - the menu closes automatically when the mouse leaves the
+area</p>
+<p><img class="mx-auto" src="./docs/assets/linebyline.jpg" alt="linebyline" /></p>
     `
 }
