@@ -21,13 +21,14 @@ function SpeedDial() {
     return (
         <div
             data-dial-init
-            className='fixed top-4 right-4 group'
+            className='fixed top-2 right-4 group lg:top-4'
             onMouseLeave={(e) => {
                 if (menuRef.current && AutoCloseMenu)
                     menuRef.current.classList.add('hidden')
             }}
         >
-            <div className='flex justify-end'>
+            {/* <div className='flex justify-end'> */}
+            <div className='flex flex-col justify-end items-end lg:items-center lg:flex-row'>
                 <HelpModal />
                 <button
                     className='flex items-center justify-center text-white bg-indigo-600 rounded-full w-10 h-10 hover:bg-indigo-700 focus:outline-none'

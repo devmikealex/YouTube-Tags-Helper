@@ -20,7 +20,7 @@ function HelpModal() {
     return (
         <>
             <button
-                className='text-indigo-600 hover:bg-indigo-200 py-1 px-2 rounded-lg mr-1 '
+                className='text-indigo-600 hover:bg-indigo-200 py-0.5 px-2 rounded-lg mb-1 -mr-1 lg:mr-1'
                 onClick={show}
             >
                 Help
@@ -32,7 +32,7 @@ function HelpModal() {
                 onClick={hide}
             >
                 <div
-                    className='relative px-4 py-9 pb-4 max-w-xl bg-white rounded-lg shadow-lg'
+                    className='relative m-2 px-4 py-9 pb-4 max-w-xl bg-white rounded-lg shadow-lg'
                     onClick={(e) => {
                         e.stopPropagation()
                     }}
