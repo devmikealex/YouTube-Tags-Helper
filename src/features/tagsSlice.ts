@@ -105,15 +105,37 @@ export const tagsSlice = createSlice({
             }
             state.tags = newState
         },
-        filterInTags: (state, action: PayloadAction<string>) => {
-            state.tags = state.tags.filter((tag) =>
-                tag.text.toLocaleLowerCase().includes(action.payload)
-            )
+        filterInTags: (
+            state,
+            action: PayloadAction<{ filter: string; CaseSensitive: boolean }>
+        ) => {
+            const CaseSensitive = action.payload.CaseSensitive
+            const filter = action.payload.filter
+
+            state.tags = state.tags.filter((tag) => {
+                //     if (CaseSensitive) return tag.text.includes(filter)
+                //     else
+                //         return tag.text
+                //             .toLocaleLowerCase()
+                //             .includes(filter.toLocaleLowerCase())
+                return filterText(tag.text, filter, CaseSensitive)
+            })
         },
-        filterOutTags: (state, action: PayloadAction<string>) => {
-            state.tags = state.tags.filter(
-                (tag) => !tag.text.toLocaleLowerCase().includes(action.payload)
-            )
+        filterOutTags: (
+            state,
+            action: PayloadAction<{ filter: string; CaseSensitive: boolean }>
+        ) => {
+            const CaseSensitive = action.payload.CaseSensitive
+            const filter = action.payload.filter
+
+            state.tags = state.tags.filter((tag) => {
+                //     if (CaseSensitive) return !tag.text.includes(filter)
+                //     else
+                //         return !tag.text
+                //             .toLocaleLowerCase()
+                //             .includes(filter.toLocaleLowerCase())
+                return !filterText(tag.text, filter, CaseSensitive)
+            })
         },
         resetTags: () => {
             return initTags
@@ -123,6 +145,11 @@ export const tagsSlice = createSlice({
         },
     },
 })
+
+function filterText(text: string, filter: string, CaseSensitive: boolean): boolean {
+    if (CaseSensitive) return text.includes(filter)
+    else return text.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+}
 
 export const {
     setTags,

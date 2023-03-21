@@ -93,10 +93,17 @@ function Toolbar() {
                     <button
                         className='button rounded-l-lg'
                         onClick={(e) => {
-                            const tags_old = store.getState().tagList.tags.length
-                            dispatch(filterInTags(inputRef.current!.value))
-                            const tags = store.getState().tagList.tags.length
-                            createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                            // const oldState = store.getState()
+                            // const tags_old = oldState.tagList.tags.length
+                            // const CaseSensitive = oldState.settings.CaseSensitive
+                            // const data = {
+                            //     filter: inputRef.current!.value,
+                            //     CaseSensitive,
+                            // }
+                            // dispatch(filterInTags(data))
+                            // const tags = store.getState().tagList.tags.length
+                            // createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                            filterFunc(inputRef.current!.value, dispatch, filterInTags)
                         }}
                     >
                         FilterIN
@@ -106,10 +113,17 @@ function Toolbar() {
                     <button
                         className='button'
                         onClick={(e) => {
-                            const tags_old = store.getState().tagList.tags.length
-                            dispatch(filterOutTags(inputRef.current!.value))
-                            const tags = store.getState().tagList.tags.length
-                            createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                            // const oldState = store.getState()
+                            // const tags_old = oldState.tagList.tags.length
+                            // const CaseSensitive = oldState.settings.CaseSensitive
+                            // const data = {
+                            //     filter: inputRef.current!.value,
+                            //     CaseSensitive,
+                            // }
+                            // dispatch(filterOutTags(data))
+                            // const tags = store.getState().tagList.tags.length
+                            // createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
+                            filterFunc(inputRef.current!.value, dispatch, filterOutTags)
                         }}
                     >
                         FilterOUT
@@ -125,6 +139,19 @@ function Toolbar() {
             </div>
         </div>
     )
+}
+
+function filterFunc(filter: string, dispatch: Function, func: Function) {
+    const oldState = store.getState()
+    const tags_old = oldState.tagList.tags.length
+    const CaseSensitive = oldState.settings.CaseSensitive
+    const data = {
+        filter,
+        CaseSensitive,
+    }
+    dispatch(func(data))
+    const tags = store.getState().tagList.tags.length
+    createToast(`Before: ${tags_old} / After: ${tags}`, dispatch)
 }
 
 export default Toolbar
