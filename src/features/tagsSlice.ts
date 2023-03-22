@@ -44,23 +44,25 @@ export const tagsSlice = createSlice({
     reducers: {
         setTags: (state, action: PayloadAction<string>) => {
             if (action.payload) {
-                let tags: string[]
+                // let tags: string[]
 
-                if (action.payload.includes(', ')) tags = action.payload.split(', ')
-                else tags = action.payload.split('\n')
+                // if (action.payload.includes(',')) tags = action.payload.split(',')
+                // else tags = action.payload.split('\n')
 
-                state.tags = tags.map((tagText): ITag => {
-                    return { text: tagText.trim(), id: genGetID.next().value }
-                })
+                // state.tags = tags.map((tagText): ITag => {
+                //     return { text: tagText.trim(), id: genGetID.next().value }
+                // })
+                state.tags = getTags(action.payload)
             }
         },
         addTags: (state, action: PayloadAction<string>) => {
             if (action.payload) {
-                const tags = action.payload.split(', ')
-                const newTags = tags.map((tagText): ITag => {
-                    return { text: tagText, id: genGetID.next().value }
-                })
-                state.tags = [...state.tags, ...newTags]
+                // const tags = action.payload.split(',')
+                // const newTags = tags.map((tagText): ITag => {
+                //     return { text: tagText.trim(), id: genGetID.next().value }
+                // })
+                // state.tags = [...state.tags, ...newTags]
+                state.tags = [...state.tags, ...getTags(action.payload)]
             }
         },
         removeTag: (state, action: PayloadAction<number>) => {
@@ -149,6 +151,18 @@ export const tagsSlice = createSlice({
 function filterText(text: string, filter: string, CaseSensitive: boolean): boolean {
     if (CaseSensitive) return text.includes(filter)
     else return text.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+}
+
+function getTags(text: string) {
+    let tags: string[]
+
+    if (text.includes(',')) tags = text.split(',')
+    else tags = text.split('\n')
+
+    const newTags = tags.map((tagText): ITag => {
+        return { text: tagText.trim(), id: genGetID.next().value }
+    })
+    return newTags
 }
 
 export const {
